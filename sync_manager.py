@@ -312,7 +312,7 @@ def sync_tasks_to_gcal(time_zone="Asia/Tehran"):
                         state[task_id]["title"] = title
                         state[task_id]["status"] = 0
                         updated_count += 1
-                        print(f"✓ Updated '{title}' to {local_dt.strftime('%Y-%m-%d %H:%M')}")
+                        print(f"[OK] Updated '{title}' to {local_dt.strftime('%Y-%m-%d %H:%M')}")
                     except Exception as e:
                         print(f"Error updating event {gcal_id}: {e}")
             else:
@@ -357,7 +357,7 @@ def sync_tasks_to_gcal(time_zone="Asia/Tehran"):
                             "status": 0
                         }
                         synced_count += 1
-                        print(f"✓ Created '{title}' in Google Calendar")
+                        print(f"[OK] Created '{title}' in Google Calendar")
                     except Exception as e:
                         print(f"Error creating event for '{title}': {e}")
 
@@ -370,7 +370,7 @@ def sync_tasks_to_gcal(time_zone="Asia/Tehran"):
                     service.events().update(calendarId="primary", eventId=gcal_id, body=ev).execute()
                 state[task_id]["status"] = 2
                 updated_count += 1
-                print(f"✓ Marked '{title}' as completed in Google Calendar")
+                print(f"[OK] Marked '{title}' as completed in Google Calendar")
             except Exception as e:
                 print(f"Notice: Could not mark completed for {task_id}: {e}")
 
@@ -480,7 +480,7 @@ def main():
             time_zone=args.timezone
         )
         task_id = tt_res.get("id")
-        print(f"✓ Created in TickTick! Task ID: {task_id}")
+        print(f"[OK] Created in TickTick! Task ID: {task_id}")
 
         if args.sync_gcal:
             gcal = GoogleCalendarClient()
@@ -499,7 +499,7 @@ def main():
                     time_zone=args.timezone
                 )
                 gcal_id = gcal_res.get("id")
-                print(f"✓ Created in Google Calendar! Event link: {gcal_res.get('htmlLink')}")
+                print(f"[OK] Created in Google Calendar! Event link: {gcal_res.get('htmlLink')}")
 
                 state = {}
                 if os.path.exists(SYNC_STATE_FILE):

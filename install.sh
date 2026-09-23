@@ -33,7 +33,7 @@ EOF
 chmod +x "$BIN_DIR/sync-task"
 chmod +x "$REPO_DIR/sync_manager.py"
 
-echo "✓ CLI installed at: $BIN_DIR/sync-task"
+echo "[OK] CLI installed at: $BIN_DIR/sync-task"
 
 # 3. Setup systemd units
 cp "$REPO_DIR/systemd/ticktick-gcal-sync.service" "$SYSTEMD_USER_DIR/"
@@ -42,7 +42,7 @@ cp "$REPO_DIR/systemd/ticktick-gcal-sync.timer" "$SYSTEMD_USER_DIR/"
 systemctl --user daemon-reload
 systemctl --user enable --now ticktick-gcal-sync.timer
 
-echo "✓ Systemd user timer enabled and started (runs every 10 min)."
+echo "[OK] Systemd user timer enabled and started (runs every 10 min)."
 echo ""
 echo "=== Setup Complete! ==="
 echo "Next steps:"

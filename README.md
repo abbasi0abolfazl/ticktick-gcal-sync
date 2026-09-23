@@ -9,19 +9,19 @@ A lightweight, automated synchronization daemon and CLI tool that seamlessly bri
 
 ---
 
-## 🌟 Highlights & Features
+## Highlights & Features
 
-- **🔄 Automatic Background Sync:** Runs silently via a systemd user timer (default: every 10 minutes and on boot). Uses **0 MB RAM** when idle!
-- **⚡ Smart Change Detection:** Postponed or rescheduled a task in TickTick on your phone? The corresponding event and popup reminders in Google Calendar are automatically updated.
-- **⏰ Full Reminder Support:** Tasks with due dates get converted to Google Calendar events with customizable popup notifications.
-- **✅ Completion Tracking:** Tasks marked as completed in TickTick are gracefully flagged in Google Calendar (`[انجام شد]`).
-- **🐧 Multi-Format Linux Support:** Automatically detects TickTick configuration across **Flatpak**, **Snap**, and native installations.
-- **🛡️ Proxy & SOCKS5 Aware:** Native fallback and support for SOCKS5 proxies (`socks5://127.0.0.1:2080`), ensuring reliable sync even in restricted networks.
-- **💻 Powerful CLI (`sync-task`):** Create, list, sync, and inspect tasks and calendar events directly from your terminal.
+- **Automatic Background Sync:** Runs silently via a systemd user timer (default: every 10 minutes and on boot). Uses **0 MB RAM** when idle!
+- **Smart Change Detection:** Postponed or rescheduled a task in TickTick on your phone? The corresponding event and popup reminders in Google Calendar are automatically updated.
+- **Full Reminder Support:** Tasks with due dates get converted to Google Calendar events with customizable popup notifications.
+- **Completion Tracking:** Tasks marked as completed in TickTick are gracefully flagged in Google Calendar (`[انجام شد]`).
+- **Multi-Format Linux Support:** Automatically detects TickTick configuration across **Flatpak**, **Snap**, and native installations.
+- **Proxy & SOCKS5 Aware:** Native fallback and support for SOCKS5 proxies (`socks5://127.0.0.1:2080`), ensuring reliable sync even in restricted networks.
+- **Powerful CLI (`sync-task`):** Create, list, sync, and inspect tasks and calendar events directly from your terminal.
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 1. **Linux** with systemd (Arch, Ubuntu, Fedora, Debian, etc.).
 2. **TickTick Desktop** installed and logged in (Flatpak, Snap, or Native).
@@ -34,7 +34,7 @@ A lightweight, automated synchronization daemon and CLI tool that seamlessly bri
 
 ---
 
-## 🚀 Quick Installation
+## Quick Installation
 
 Clone this repository and run the automated installer:
 
@@ -52,7 +52,7 @@ The script will:
 
 ---
 
-## 🔑 Authentication
+## Authentication
 
 Place your downloaded Google OAuth `credentials.json` into:
 
@@ -70,7 +70,7 @@ A browser window will open. Sign in with your Google account and approve the Cal
 
 ---
 
-## 🛠️ CLI Usage Reference
+## CLI Usage Reference
 
 The `sync-task` command is available system-wide:
 
@@ -108,7 +108,7 @@ sync-task list-projects
 
 ---
 
-## ⏱️ Managing the Background Daemon
+## Managing the Background Daemon
 
 Since the sync runs via systemd user timers, you can check its status and logs anytime:
 
@@ -125,24 +125,24 @@ systemctl --user start ticktick-gcal-sync.service
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 ticktick-gcal-sync/
-├── sync_manager.py     # Core sync engine, TickTick & GCal API clients, CLI
-├── install.sh          # One-step automated installer
-├── requirements.txt    # Python dependencies
-├── pyproject.toml      # Project metadata
-├── systemd/
-│   ├── ticktick-gcal-sync.service
-│   └── ticktick-gcal-sync.timer
-├── LICENSE             # MIT License
-└── README.md           # Documentation
+|-- sync_manager.py     # Core sync engine, TickTick & GCal API clients, CLI
+|-- install.sh          # One-step automated installer
+|-- requirements.txt    # Python dependencies
+|-- pyproject.toml      # Project metadata
+|-- systemd/
+|   |-- ticktick-gcal-sync.service
+|   `-- ticktick-gcal-sync.timer
+|-- LICENSE             # MIT License
+`-- README.md           # Documentation
 ```
 
 ---
 
-## 🔒 Security & Privacy
+## Security & Privacy
 
 Your credentials and tokens are stored exclusively on your local machine:
 - `credentials.json` & `token.json` are kept in `~/.config/ticktick-gcal-sync/` and are strictly excluded via `.gitignore`.
@@ -150,7 +150,7 @@ Your credentials and tokens are stored exclusively on your local machine:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](LICENSE).
-Created with ❤️ by [Abolfazl Abbasi](https://github.com/abbasi0abolfazl).
+Created by [Abolfazl Abbasi](https://github.com/abbasi0abolfazl).
