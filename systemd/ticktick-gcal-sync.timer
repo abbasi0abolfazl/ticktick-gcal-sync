@@ -1,0 +1,10 @@
+[Unit]
+Description=Run TickTick to Google Calendar Sync periodically
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=10min
+Unit=ticktick-gcal-sync.service
+
+[Install]
+WantedBy=timers.target

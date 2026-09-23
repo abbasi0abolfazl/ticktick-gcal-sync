@@ -1,0 +1,21 @@
+[project]
+name = "ticktick-gcal-sync"
+version = "0.1.0"
+description = "Lightweight two-way and periodic synchronization between TickTick and Google Calendar on Linux"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    { name = "Abolfazl Abbasi", email = "a.abbasi5775@gmail.com" }
+]
+license = { text = "MIT" }
+dependencies = [
+    "google-api-python-client>=2.100.0",
+    "google-auth-oauthlib>=1.2.0",
+    "google-auth-httplib2>=0.2.0",
+    "pytz>=2024.1",
+    "pysocks>=1.7.1",
+    "requests>=2.31.0"
+]
+
+[project.scripts]
+sync-task = "sync_manager:main"

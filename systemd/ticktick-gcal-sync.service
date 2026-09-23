@@ -1,0 +1,13 @@
+[Unit]
+Description=TickTick to Google Calendar Periodic Sync Service
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/sync-task sync
+StandardOutput=journal
+StandardError=journal
+Restart=no
+
+[Install]
+WantedBy=default.target
