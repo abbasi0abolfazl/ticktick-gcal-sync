@@ -68,6 +68,15 @@ sync-task auth-google
 
 A browser window will open. Sign in with your Google account and approve the Calendar access. The resulting token will be saved securely at `~/.config/ticktick-gcal-sync/token.json`.
 
+### ⚠️ Permanent Token Fix (Prevent 7-Day Expiration)
+By default, Google Cloud OAuth apps in **"Testing"** mode automatically revoke refresh tokens every **7 days** (`invalid_grant: Token has been expired or revoked`). To make the authorization **permanent** so it never prompts you again:
+
+1. Open [Google Cloud Console - OAuth Consent Screen](https://console.cloud.google.com/apis/credentials/consent).
+2. Under **Publishing status**, click **"PUBLISH APP"** and confirm.
+3. Your app will transition to **"In production"** (unverified).
+4. Run `sync-task auth-google` one final time. In the browser, click **Advanced** -> **Go to (unsafe)** and grant permissions.
+5. Your refresh token will now last indefinitely without recurring re-authorization!
+
 ---
 
 ## CLI Usage Reference

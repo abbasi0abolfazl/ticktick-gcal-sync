@@ -180,8 +180,13 @@ class GoogleCalendarClient:
 
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
-                creds.refresh(Request())
-            else:
+                try:
+                    creds.refresh(Request())
+                except Exception as e:
+                    print(f"Token refresh failed: {e}. Re-authenticating...")
+                    creds = None
+
+            if not creds or not creds.valid:
                 if not os.path.exists(CREDENTIALS_FILE):
                     raise FileNotFoundError(
                         f"credentials.json not found in {CONFIG_DIR}.\n"
@@ -452,8 +457,12 @@ def main():
         project_id = None
         if args.list:
             projects = tt.get_projects()
+            target_list = args.list.lower().strip()
             for p in projects:
-                if p.get("name", "").lower() == args.list.lower():
+                p_name = p.get("name", "").lower().strip()
+                if (p_name == target_list or 
+                    target_list in p_name or 
+                    p.get("id") == args.list):
                     project_id = p.get("id")
                     break
             if not project_id:
